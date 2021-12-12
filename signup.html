@@ -41,22 +41,22 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
   </head>
   <body class="text-center">    
     <main class="form-signin">
-      <form>
+      <form action="/" method="POST">
         <img class="mb-4" src="image/uknow-logo.png" alt="" width="90">
         <h1 class="h3 mb-3 fw-normal">Signup for Our Newsletter</h1>
     
         <div class="form-floating">
-          <input type="text" class="form-control top" placeholder="First Name" required autofocus>
+          <input type="text" name="fName" class="form-control top" placeholder="First Name" required autofocus>
         </div>
         <div class="form-floating">
-          <input type="text" class="form-control middle" placeholder="Last Name" required>
+          <input type="text" name="lName" class="form-control middle" placeholder="Last Name" required>
         </div>
         <div class="form-floating">
-          <input type="email" class="form-control bottom" placeholder="Email" required>          
+          <input type="email" name="email" class="form-control bottom" placeholder="Email" required>          
         </div>        
         <button class="w-100 btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
         <p class="mt-5 mb-3 text-muted">&copy; UKnow News</p>
