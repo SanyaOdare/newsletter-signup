@@ -71,6 +71,8 @@ app.listen (process.env.PORT || 3000, function() {
   console.log("Server is running on port 3000....");  
 });
 
+// node_modules/
+
 /*
 All the lines of codes look O.K. However, 
 the API KEY and email list I.D seem no to be in sync.
