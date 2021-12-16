@@ -1,31 +1,76 @@
 // jshint esversion: 6
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const request = require('request');
+const express = require("express");
+const bodyParser = require("body-parser");
+const request = require("request");
+
 
 const app = express();
 
-app.use(express.static('public'));
+app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/signup.html');
+app.get("/", function(req, res) {
+  res.sendFile(__dirname + "/signup.html");
 });
 
-app.post('/', (req, res) => {
+app.post("/", function(req, res) {
 
-  let firstName = req.body.fName;
-  let lastName = req.body.lName;
-  let email = req.body.email;
+  var firstName = req.body.fName;
+  var lastName = req.body.lName;
+  var email = req.body.email;
 
-  console.log(firstName, lastName, email);
-  
-})
+  var data = {
+    members: [
+      {
+        email_address: email,
+        status: "subscribed",
+        merge_fields: {
+          FNAME: firstName,
+          LNAME: lastName
+        }
+      }
+    ]
+  };
 
-app.listen (3000, (req, res) => {
-  console.log('Server is running on port 3000....');  
+  var jsonData = JSON.stringify(data);
+
+
+  var options = {
+    url: "https://us20.api.mailchimp.com/3.0/lists/ae8a6a4a52",
+    method: "POST",
+    headers: {
+      "Authorization": "sanyaodare d8ad7f696032d71476c4eb8a432316fd-us20"
+    },
+    body: jsonData
+  };
+
+  request(options, function(error, response, body) {
+    if (error) {
+      console.log(error);      
+    } else {
+      console.log(response.statusCode);      
+    }
+  });
+
+
 });
 
+app.listen (3000, function() {
+  console.log("Server is running on port 3000....");  
+});
 
-// 47a42095679b10a3b2d6c0b4be2d8f2a-us20
+/*
+All the lines of codes look O.K. However, 
+the API KEY and email list I.D seem no to be in sync.
+*/
+
+
+// API KEY
+// d8ad7f696032d71476c4eb8a432316fd-us20
+
+// New Email List Id
+// ae8a6a4a52
+
+// GUESSED URL
+// https://us20.api.mailchimp.com/3.0/lists/ae8a6a4a52
