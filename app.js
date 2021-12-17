@@ -40,7 +40,7 @@ app.post("/", function(req, res) {
     url: "https://us20.api.mailchimp.com/3.0/lists/ae8a6a4a52",
     method: "POST",
     headers: {
-      "Authorization": "sanyaodare d8ad7f696032d71476c4eb8a432316fd-us20"
+      "Authorization": "auth d8ad7f696032d71476c4eb8a432316fd-us20"
     },
     body: jsonData
   };
@@ -70,8 +70,6 @@ app.post("/failure", function(req, res) {
 app.listen (process.env.PORT || 3000, function() {
   console.log("Server is running on port 3000....");  
 });
-
-// node_modules/
 
 /*
 All the lines of codes look O.K. However, 
